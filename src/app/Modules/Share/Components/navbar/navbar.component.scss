@@ -1,0 +1,16 @@
+::ng-deep mat-toolbar{
+  background: red !important;
+  height: 10% !important;
+
+  button{
+    background: transparent;
+    border: none;
+    height: 100%;
+    cursor: pointer;
+
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
