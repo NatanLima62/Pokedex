@@ -1,1 +1,10 @@
-<p>pokemons works!</p>
+<div class="pokemon-main-container">
+  <div class="pokemon-main-container-header">
+    <h1>Pokemons</h1>
+    <span>Campo de pesquisa</span>
+    <span>Select com os tipo</span>
+  </div>
+  <div class="pokemon-main-container-content">
+    <app-pokemon-card *ngFor="let pokemon of pokemons" [pokemon]="pokemon"/>
+  </div>
+</div>

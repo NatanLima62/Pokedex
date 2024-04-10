@@ -1,0 +1,17 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <span>{{pokemon.name}}</span>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="imagem">
+      <img src="{{pokemon.image}}" alt="pokemon foto">
+    </div>
+  </mat-card-content>
+  <mat-card-footer>
+    <span *ngFor="let type of pokemon.types">
+      {{type}}
+    </span>
+  </mat-card-footer>
+</mat-card>

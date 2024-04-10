@@ -1,1 +1,33 @@
-<p>login works!</p>
+<div class="auth-main-container">
+  <div class="auth-main-container-left">
+    <div class="login-form">
+      <form ngForm [formGroup]="loginForm">
+        <mat-form-field appearance="outline">
+          <mat-label>
+            <mat-icon>email</mat-icon>
+            E-mail
+          </mat-label>
+          <input matInput placeholder="Seu email" formControlName="email">
+          <mat-error *ngFor="let error of verifyError('email')">{{ error }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>
+            <mat-icon>lock</mat-icon>
+            Senha
+          </mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide">
+            <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-error *ngFor="let error of verifyError('password')">{{ error }}</mat-error>
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+
+  <div class="auth-main-container-right">
+    b
+  </div>
+</div>

@@ -1,4 +1,5 @@
-import {Component, Input, signal} from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -8,4 +9,12 @@ import {Component, Input, signal} from '@angular/core';
 export class AppComponent {
   title = 'Pokedex';
   @Input() toggleSignal: boolean = false;
+  showNavbar: boolean = false;
+
+  constructor(private router: Router) {
+    this.router.events
+      .subscribe(() =>{
+        this.showNavbar = this.router.url !== '/auth';
+      });
+  }
 }

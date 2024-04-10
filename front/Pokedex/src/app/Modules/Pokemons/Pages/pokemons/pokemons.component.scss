@@ -1,0 +1,14 @@
+::ng-deep .pokemon-main-container {
+  padding: 1rem;
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

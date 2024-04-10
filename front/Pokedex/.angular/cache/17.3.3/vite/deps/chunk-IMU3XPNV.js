@@ -1,11 +1,10 @@
 import {
   DOCUMENT,
   isPlatformBrowser
-} from "./chunk-YHMECX2A.js";
+} from "./chunk-777IFQLR.js";
 import {
   ANIMATION_MODULE_TYPE,
   APP_ID,
-  BehaviorSubject,
   CSP_NONCE,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -21,35 +20,18 @@ import {
   LOCALE_ID,
   NgModule,
   NgZone,
-  Observable,
   Optional,
   Output,
   PLATFORM_ID,
   QueryList,
-  Subject,
-  Subscription,
   Version,
   ViewChild,
   ViewEncapsulation$1,
-  __spreadProps,
-  __spreadValues,
   booleanAttribute,
-  combineLatest,
-  concat,
-  debounceTime,
-  distinctUntilChanged,
   effect,
-  filter,
   inject,
   isSignal,
-  map,
-  of,
   setClassMetadata,
-  skip,
-  startWith,
-  take,
-  takeUntil,
-  tap,
   ɵɵInputTransformsFeature,
   ɵɵNgOnChangesFeature,
   ɵɵProvidersFeature,
@@ -80,9 +62,29 @@ import {
   ɵɵtext,
   ɵɵtextInterpolate1,
   ɵɵviewQuery
-} from "./chunk-G4AL5BI7.js";
+} from "./chunk-ZUGTMA3V.js";
+import {
+  BehaviorSubject,
+  Observable,
+  Subject,
+  Subscription,
+  __spreadProps,
+  __spreadValues,
+  combineLatest,
+  concat,
+  debounceTime,
+  distinctUntilChanged,
+  filter,
+  map,
+  of,
+  skip,
+  startWith,
+  take,
+  takeUntil,
+  tap
+} from "./chunk-ZLMZVGHN.js";
 
-// ../../../../../node_modules/@angular/cdk/fesm2022/coercion.mjs
+// ../node_modules/@angular/cdk/fesm2022/coercion.mjs
 function coerceBooleanProperty(value) {
   return value != null && `${value}` !== "false";
 }
@@ -99,7 +101,7 @@ function coerceElement(elementOrRef) {
   return elementOrRef instanceof ElementRef ? elementOrRef.nativeElement : elementOrRef;
 }
 
-// ../../../../../node_modules/@angular/cdk/fesm2022/platform.mjs
+// ../node_modules/@angular/cdk/fesm2022/platform.mjs
 var hasV8BreakIterator;
 try {
   hasV8BreakIterator = typeof Intl !== "undefined" && Intl.v8BreakIterator;
@@ -159,6 +161,50 @@ var PlatformModule = _PlatformModule;
     args: [{}]
   }], null, null);
 })();
+var supportedInputTypes;
+var candidateInputTypes = [
+  // `color` must come first. Chrome 56 shows a warning if we change the type to `color` after
+  // first changing it to something else:
+  // The specified value "" does not conform to the required format.
+  // The format is "#rrggbb" where rr, gg, bb are two-digit hexadecimal numbers.
+  "color",
+  "button",
+  "checkbox",
+  "date",
+  "datetime-local",
+  "email",
+  "file",
+  "hidden",
+  "image",
+  "month",
+  "number",
+  "password",
+  "radio",
+  "range",
+  "reset",
+  "search",
+  "submit",
+  "tel",
+  "text",
+  "time",
+  "url",
+  "week"
+];
+function getSupportedInputTypes() {
+  if (supportedInputTypes) {
+    return supportedInputTypes;
+  }
+  if (typeof document !== "object" || !document) {
+    supportedInputTypes = new Set(candidateInputTypes);
+    return supportedInputTypes;
+  }
+  let featureTestInput = document.createElement("input");
+  supportedInputTypes = new Set(candidateInputTypes.filter((value) => {
+    featureTestInput.setAttribute("type", value);
+    return featureTestInput.type === value;
+  }));
+  return supportedInputTypes;
+}
 var supportsPassiveEvents;
 function supportsPassiveEventListeners() {
   if (supportsPassiveEvents == null && typeof window !== "undefined") {
@@ -272,7 +318,7 @@ function _isTestEnvironment() {
   );
 }
 
-// ../../../../../node_modules/@angular/cdk/fesm2022/keycodes.mjs
+// ../node_modules/@angular/cdk/fesm2022/keycodes.mjs
 var TAB = 9;
 var ENTER = 13;
 var SHIFT = 16;
@@ -301,7 +347,7 @@ function hasModifierKey(event, ...modifiers) {
   return event.altKey || event.shiftKey || event.ctrlKey || event.metaKey;
 }
 
-// ../../../../../node_modules/@angular/cdk/fesm2022/observers.mjs
+// ../node_modules/@angular/cdk/fesm2022/observers.mjs
 var _MutationObserverFactory = class _MutationObserverFactory {
   create(callback) {
     return typeof MutationObserver === "undefined" ? null : new MutationObserver(callback);
@@ -535,7 +581,7 @@ var ObserversModule = _ObserversModule;
   }], null, null);
 })();
 
-// ../../../../../node_modules/@angular/cdk/fesm2022/layout.mjs
+// ../node_modules/@angular/cdk/fesm2022/layout.mjs
 var _LayoutModule = class _LayoutModule {
 };
 _LayoutModule.ɵfac = function LayoutModule_Factory(t) {
@@ -733,7 +779,7 @@ function splitQueries(queries) {
   return queries.map((query) => query.split(",")).reduce((a1, a2) => a1.concat(a2)).map((query) => query.trim());
 }
 
-// ../../../../../node_modules/@angular/cdk/fesm2022/a11y.mjs
+// ../node_modules/@angular/cdk/fesm2022/a11y.mjs
 var ID_DELIMITER = " ";
 function addAriaReferencedId(el, attr, id) {
   const ids = getAriaReferenceIds(el, attr);
@@ -2823,7 +2869,7 @@ var A11yModule = _A11yModule;
   }], null);
 })();
 
-// ../../../../../node_modules/@angular/cdk/fesm2022/bidi.mjs
+// ../node_modules/@angular/cdk/fesm2022/bidi.mjs
 var DIR_DOCUMENT = new InjectionToken("cdk-dir-doc", {
   providedIn: "root",
   factory: DIR_DOCUMENT_FACTORY
@@ -2981,10 +3027,10 @@ var BidiModule = _BidiModule;
   }], null, null);
 })();
 
-// ../../../../../node_modules/@angular/cdk/fesm2022/cdk.mjs
+// ../node_modules/@angular/cdk/fesm2022/cdk.mjs
 var VERSION = new Version("17.3.3");
 
-// ../../../../../node_modules/@angular/material/fesm2022/core.mjs
+// ../node_modules/@angular/material/fesm2022/core.mjs
 var _c0 = ["*", [["mat-option"], ["ng-container"]]];
 var _c1 = ["*", "mat-option, ng-container"];
 var _c2 = ["text"];
@@ -3138,6 +3184,28 @@ function _checkCdkVersionMatch() {
     console.warn("The Angular Material version (" + VERSION2.full + ") does not match the Angular CDK version (" + VERSION.full + ").\nPlease ensure the versions of these two packages exactly match.");
   }
 }
+var _ErrorStateTracker = class {
+  constructor(_defaultMatcher, ngControl, _parentFormGroup, _parentForm, _stateChanges) {
+    this._defaultMatcher = _defaultMatcher;
+    this.ngControl = ngControl;
+    this._parentFormGroup = _parentFormGroup;
+    this._parentForm = _parentForm;
+    this._stateChanges = _stateChanges;
+    this.errorState = false;
+  }
+  /** Updates the error state based on the provided error state matcher. */
+  updateErrorState() {
+    const oldState = this.errorState;
+    const parent = this._parentFormGroup || this._parentForm;
+    const matcher = this.matcher || this._defaultMatcher;
+    const control = this.ngControl ? this.ngControl.control : null;
+    const newState = matcher?.isErrorState(control, parent) ?? false;
+    if (newState !== oldState) {
+      this.errorState = newState;
+      this._stateChanges.next();
+    }
+  }
+};
 var MAT_DATE_LOCALE = new InjectionToken("MAT_DATE_LOCALE", {
   providedIn: "root",
   factory: MAT_DATE_LOCALE_FACTORY
@@ -4882,6 +4950,8 @@ export {
   coerceNumberProperty,
   coerceElement,
   Platform,
+  getSupportedInputTypes,
+  normalizePassiveListenerOptions,
   RtlScrollAxisType,
   supportsScrollBehavior,
   getRtlScrollAxisType,
@@ -4900,10 +4970,12 @@ export {
   Directionality,
   BidiModule,
   MatCommonModule,
+  _ErrorStateTracker,
+  ErrorStateMatcher,
   RippleRenderer,
   MAT_RIPPLE_GLOBAL_OPTIONS,
   MatRippleModule,
   MatPseudoCheckboxModule,
   MatRippleLoader
 };
-//# sourceMappingURL=chunk-4RJYJE3L.js.map
+//# sourceMappingURL=chunk-IMU3XPNV.js.map
