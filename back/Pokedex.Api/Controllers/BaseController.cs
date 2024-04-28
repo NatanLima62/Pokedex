@@ -1,5 +1,4 @@
-﻿using FluentValidation.Results;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Pokedex.Api.Responses;
@@ -41,16 +40,6 @@ public abstract class BaseController : Controller
     {
         var erros = modelState.Values.SelectMany(e => e.Errors);
         foreach (var erro in erros)
-        {
-            AddErrorProcessing(erro.ErrorMessage);
-        }
-
-        return CustomResponse(Ok(null));
-    }
-
-    protected IActionResult CustomResponse(ValidationResult validationResult)
-    {
-        foreach (var erro in validationResult.Errors)
         {
             AddErrorProcessing(erro.ErrorMessage);
         }
