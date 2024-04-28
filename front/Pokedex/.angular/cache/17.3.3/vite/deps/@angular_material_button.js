@@ -4,8 +4,8 @@ import {
   MatRippleLoader,
   MatRippleModule,
   Platform
-} from "./chunk-IMU3XPNV.js";
-import "./chunk-777IFQLR.js";
+} from "./chunk-4NVENJ4C.js";
+import "./chunk-I3BVXRZY.js";
 import {
   ANIMATION_MODULE_TYPE,
   ChangeDetectionStrategy,
@@ -20,6 +20,8 @@ import {
   NgZone,
   Optional,
   ViewEncapsulation$1,
+  __spreadProps,
+  __spreadValues,
   booleanAttribute,
   inject,
   numberAttribute,
@@ -41,13 +43,9 @@ import {
   ɵɵinvalidFactory,
   ɵɵprojection,
   ɵɵprojectionDef
-} from "./chunk-ZUGTMA3V.js";
-import {
-  __spreadProps,
-  __spreadValues
-} from "./chunk-ZLMZVGHN.js";
+} from "./chunk-S7YCST6X.js";
 
-// ../node_modules/@angular/material/fesm2022/button.mjs
+// node_modules/@angular/material/fesm2022/button.mjs
 var _c0 = ["mat-button", ""];
 var _c1 = [[["", 8, "material-icons", 3, "iconPositionEnd", ""], ["mat-icon", 3, "iconPositionEnd", ""], ["", "matButtonIcon", "", 3, "iconPositionEnd", ""]], "*", [["", "iconPositionEnd", "", 8, "material-icons"], ["mat-icon", "iconPositionEnd", ""], ["", "matButtonIcon", "", "iconPositionEnd", ""]]];
 var _c2 = [".material-icons:not([iconPositionEnd]), mat-icon:not([iconPositionEnd]), [matButtonIcon]:not([iconPositionEnd])", "*", ".material-icons[iconPositionEnd], mat-icon[iconPositionEnd], [matButtonIcon][iconPositionEnd]"];

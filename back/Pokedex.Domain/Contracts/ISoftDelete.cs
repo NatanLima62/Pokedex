@@ -2,5 +2,5 @@
 
 public interface ISoftDelete
 {
-    public bool Desativado { get; set; }
+    public bool Disabled { get; set; }
 }

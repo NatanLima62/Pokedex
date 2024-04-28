@@ -5,10 +5,10 @@ namespace Pokedex.Domain.Entities;
 
 public abstract class Entity : BaseEntity, ITracking 
 {
-    public int CriadoPor { get; set; }
-    public DateTime CriadoEm { get; set; }
-    public int ModificadoPor { get; set; }
-    public DateTime ModificadoEm { get; set; }
+    public int CreatedBy { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public int UpdatedBy { get; set; }
+    public DateTime UpdatedAt { get; set; }
 
     public virtual bool Validate(out ValidationResult validationResult)
     {
