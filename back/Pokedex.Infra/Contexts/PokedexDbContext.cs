@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
+using Pokedex.Core.Authorization.AuthenticatedUser;
 using Pokedex.Domain.Contracts;
 using Pokedex.Domain.Entities;
 using Pokedex.Infra.Extensions;
@@ -9,7 +10,11 @@ namespace Pokedex.Infra.Contexts;
 
 public class PokedexDbContext : DbContext, IUnitOfWork
 {
-    public PokedexDbContext(DbContextOptions<PokedexDbContext> options) : base(options) { }
+    private readonly IAuthenticatedUser _authenticatedUser;
+    public PokedexDbContext(DbContextOptions<PokedexDbContext> options, IAuthenticatedUser authenticatedUser) : base(options)
+    {
+        _authenticatedUser = authenticatedUser;
+    }
 
     public DbSet<User> Users { get; set; } = null!;
     
@@ -46,10 +51,12 @@ public class PokedexDbContext : DbContext, IUnitOfWork
         {
             //Todo: Adicionar a logica para UpdatedBy e CreatedBy do usuario logado
             ((ITracking)entityEntry.Entity).UpdatedAt = DateTime.Now;
+            ((ITracking)entityEntry.Entity).UpdatedBy = _authenticatedUser.Id;
             if (entityEntry.State != EntityState.Added)
                 continue;
 
             ((ITracking)entityEntry.Entity).CreatedAt = DateTime.Now;
+            ((ITracking)entityEntry.Entity).CreatedBy = _authenticatedUser.Id;
         }
     }
 }
