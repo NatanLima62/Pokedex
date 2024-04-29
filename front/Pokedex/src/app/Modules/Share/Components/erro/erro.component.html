@@ -1,0 +1,10 @@
+<div class="snackbar-container">
+  <span class="example-pizza-party" matSnackBarLabel>
+    <span *ngFor="let message of messages">
+      {{ message }}
+    </span>
+  </span>
+  <span matSnackBarActions>
+    <button mat-button matSnackBarAction (click)="snackBarRef.dismissWithAction()"><mat-icon>close</mat-icon></button>
+  </span>
+</div>

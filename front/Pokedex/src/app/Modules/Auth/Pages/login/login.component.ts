@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../Services/auth.service";
 import {Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {ErroComponent} from "../../../Share/Components/erro/erro.component";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-login',
@@ -18,7 +21,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) {
   }
 
@@ -75,8 +79,11 @@ export class LoginComponent implements OnInit {
         next: (response) => {
           localStorage.setItem('token', response.token);
         },
-        error: (error) => {
-          console.log(error);
+        error: (error: HttpErrorResponse) => {
+          this._snackBar.openFromComponent(ErroComponent, {
+            data: {messages: error.status === 0 ? ["Erro desconhecido"] : error.error},
+            duration: 5000
+          });
         },
         complete: () => {
           this.router.navigate(['/pokemons']).then();
