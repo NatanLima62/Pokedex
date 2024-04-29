@@ -1,6 +1,7 @@
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
 using Pokedex.Api.Configurations;
+using Pokedex.Api.Configurations.Swagger;
 using Pokedex.Application;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,10 +31,13 @@ builder.Services.AddVersioning();
 builder.Services.SetupSettings(builder.Configuration);
 builder.Services.ConfigureDependencies(builder.Configuration);
 builder.Services.ResolveApplicationDependencies();
+builder.Services.AddApiConfiguration();
 
 var app = builder.Build();
 
 app.UseSwaggerConfig();
+
+app.UseApiConfiguration();
 
 app.UseHttpsRedirection();
 

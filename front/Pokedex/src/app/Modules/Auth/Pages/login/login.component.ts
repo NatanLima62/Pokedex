@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AuthService} from "../../Services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -7,18 +9,22 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit {
-  constructor(private formBuilder: FormBuilder) {
-  }
-
-  ngOnInit(): void {
-
-  }
-
   hide: boolean = true;
   loginForm: FormGroup = this.formBuilder.group({
     email: ['', Validators.required, Validators.email],
     password: ['', Validators.required]
   });
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
+  }
+
+  ngOnInit(): void {
+
+  }
 
   verifyError(campo: string): any {
     if(campo == null && campo == ''){
@@ -56,5 +62,25 @@ export class LoginComponent implements OnInit {
       errors.push(`O campo ${campo} deve ter no máximo ${campoForm.getError('maxlength').requiredLength} caracteres`);
     }
     return errors;
+  }
+
+  login() {
+    if (this.loginForm.invalid){
+      this.loginForm.markAllAsTouched();
+      this.loginForm.markAsDirty();
+    }
+
+    this.authService.login(this.loginForm.value).subscribe(
+      {
+        next: (response) => {
+          localStorage.setItem('token', response.token);
+        },
+        error: (error) => {
+          console.log(error);
+        },
+        complete: () => {
+          this.router.navigate(['/pokemons']).then();
+      }
+    })
   }
 }

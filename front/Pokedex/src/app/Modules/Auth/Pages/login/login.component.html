@@ -20,12 +20,24 @@
             Senha
           </mat-label>
           <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
-          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                  [attr.aria-pressed]="hide">
+          <button mat-icon-button matSuffix (click)="hide = !hide">
             <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
           </button>
           <mat-error *ngFor="let error of verifyError('password')">{{ error }}</mat-error>
         </mat-form-field>
+
+        <div class="button-container">
+          <button mat-flat-button color="warn" (click)="login()">Entrar</button>
+        </div>
+
+        <div class="links">
+          <div class="forgot-password">
+            <a routerLink="/forgot-password">Esqueci minha senha</a>
+          </div>
+          <div class="create-account">
+            <span>Não possui conta? <a routerLink="/register">Criar conta</a></span>
+          </div>
+        </div>
       </form>
     </div>
   </div>

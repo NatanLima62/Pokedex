@@ -29,8 +29,28 @@
         }
 
         mat-form-field{
-          width: 70%;
+          width: 50%;
           margin-bottom: 1rem;
+        }
+
+        .button-container{
+          width: 50%;
+          margin-bottom: 1rem;
+
+          button{
+            width: 100%;
+          }
+        }
+
+        .links{
+          display: flex;
+          justify-content: space-between;
+          width: 50%;
+
+          a{
+            text-decoration: none;
+          }
+
         }
       }
     }

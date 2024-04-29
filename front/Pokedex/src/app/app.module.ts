@@ -7,6 +7,8 @@ import {SharesModule} from "./Modules/Share/shares.module";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
 import {MatListItem, MatNavList} from "@angular/material/list";
+import {HttpClientModule} from "@angular/common/http";
+import {JwtModule} from "@auth0/angular-jwt";
 
 @NgModule({
   declarations: [
@@ -19,7 +21,15 @@ import {MatListItem, MatNavList} from "@angular/material/list";
     MatDrawerContainer,
     MatDrawer,
     MatNavList,
-    MatListItem
+    MatListItem,
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: function tokenGetter() {
+          return localStorage.getItem('access_token');
+        }
+      },
+    }),
   ],
   providers: [
     provideAnimationsAsync()
