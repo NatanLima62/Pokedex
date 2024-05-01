@@ -1,10 +1,9 @@
-::ng-deep .login-main-container {
+::ng-deep .register-main-container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
-
   &-left {
     display: flex;
     justify-content: center;
@@ -12,53 +11,48 @@
     width: 90%;
     height: 100%;
 
-    .login-form {
+    .register-form{
       width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-      form {
+      form{
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         width: 100%;
 
-        .title {
-          h1 {
+        .title{
+          h1{
             font-size: 3rem;
             margin-bottom: 3rem;
           }
         }
 
-        mat-form-field {
+        mat-form-field{
           width: 50%;
           margin-bottom: 1rem;
         }
 
-        .password-field{
-          margin-bottom: 0;
-
-          .mat-mdc-form-field-subscript-wrapper{
-            height: 1rem;
-          }
-        }
-
-        .forgot-password{
+        .image{
+          margin-left: 0;
           width: 50%;
-          display: flex;
-          margin-bottom: 1rem;
+          margin-bottom: 2rem;
         }
 
-        .button-container {
+        .button-container{
           width: 50%;
           margin-bottom: 1rem;
 
-          button {
+          button{
             width: 100%;
             background: red;
             color: white;
 
             .mdc-button__label {
-              mat-progress-spinner {
+              mat-progress-spinner{
                 width: 20px !important;
                 height: 20px !important;
               }
@@ -66,7 +60,7 @@
           }
         }
 
-        .links {
+        .links{
           display: flex;
           justify-content: space-between;
           width: 50%;

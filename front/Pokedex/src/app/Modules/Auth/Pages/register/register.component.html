@@ -1,20 +1,29 @@
-<div class="login-main-container">
-  <div class="login-main-container-left">
-    <div class="login-form">
-      <form ngForm [formGroup]="loginForm">
+<div class="register-main-container">
+  <div class="register-main-container-left">
+    <div class="register-form">
+      <form ngForm [formGroup]="registerForm">
         <div class="title">
-          <h1>Login</h1>
+          <h1>Register</h1>
         </div>
+        <mat-form-field appearance="outline">
+          <mat-label>
+            <mat-icon>person</mat-icon>
+            Name
+          </mat-label>
+          <input matInput placeholder="Your name" formControlName="name">
+          <mat-error *ngFor="let error of verifyError('name')">{{ error }}</mat-error>
+        </mat-form-field>
+
         <mat-form-field appearance="outline">
           <mat-label>
             <mat-icon>email</mat-icon>
             E-mail
           </mat-label>
-          <input matInput placeholder="Seu email" formControlName="email">
+          <input matInput placeholder="Your email" formControlName="email">
           <mat-error *ngFor="let error of verifyError('email')">{{ error }}</mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="outline" class="password-field">
+        <mat-form-field appearance="outline">
           <mat-label>
             <mat-icon>lock</mat-icon>
             Password
@@ -25,9 +34,8 @@
           </button>
           <mat-error *ngFor="let error of verifyError('password')">{{ error }}</mat-error>
         </mat-form-field>
-        <div class="forgot-password">
-          <a routerLink="/forgot-password">I forgot my password</a>
-        </div>
+
+<!--        <input class="image" type="file" (change)="onFileSelected($event)" formControlName="image">-->
 
         <div class="button-container">
           @if (inProgress) {
@@ -38,20 +46,20 @@
               </mat-progress-spinner>
             </button>
           } @else {
-            <button mat-flat-button [disabled]="inProgress" (click)="login()">Login</button>
+            <button mat-flat-button [disabled]="inProgress" (click)="register()">Register</button>
           }
         </div>
 
         <div class="links">
           <div class="create-account">
-            <span>Don't have an account? <a routerLink="/auth/register">Create</a></span>
+            <span>Have an count? <a routerLink="/auth/login">Login</a></span>
           </div>
         </div>
       </form>
     </div>
   </div>
 
-  <div class="login-main-container-right">
+  <div class="register-main-container-right">
     <div>
       <img src="assets/pokemon-logo.svg" alt="pokemon-logo">
     </div>

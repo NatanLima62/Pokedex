@@ -3,8 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: '', redirectTo: 'pokemons', pathMatch: 'full'
+  },
+  {
     path: 'auth',
-    loadChildren: () => import('./Modules/Auth/auth.module').then(m => m.AuthModule)
+    loadChildren: () => import('./Modules/Auth/auth.module').then(m => m.AuthModule),
   },
   {
     path: 'users',
@@ -13,9 +16,6 @@ const routes: Routes = [
   {
     path: 'pokemons',
     loadChildren: () => import('./Modules/Pokemons/pokemon.module').then(m => m.PokemonModule)
-  },
-  {
-    path: '', redirectTo: 'pokemons', pathMatch: 'full'
   },
   {
     path: '**', redirectTo: 'pokemons'

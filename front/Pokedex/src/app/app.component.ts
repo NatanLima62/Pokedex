@@ -18,10 +18,10 @@ export class AppComponent {
   ) {
     this.router.events
       .subscribe(() =>{
-        this.showNavbar = this.router.url !== '/auth';
+        this.showNavbar = this.router.url !== '/auth/login' && this.router.url !== '/auth/register';
       });
 
-    if (this.authService.verifyToken() && this.router.url === '/auth'){
+    if (this.authService.verifyToken()){
       this.router.navigate(['/pokemons']).then();
     }
   }

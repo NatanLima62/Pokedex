@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {LoginViewModel, TokenViewModel} from "../Models/AuthViewModel";
+import {LoginViewModel, RegisterResponseViewModel, RegisterViewModel, TokenViewModel} from "../Models/AuthViewModel";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {baseUrl} from "../../../../environment";
@@ -22,21 +22,32 @@ export class AuthService{
     return this.http.post<TokenViewModel>(`${baseUrl}/api/v1/auth`, login);
   }
 
+  register(register: RegisterViewModel): Observable<RegisterResponseViewModel>{
+    const formData = new FormData();
+    formData.append('name', register.name);
+    formData.append('email', register.email);
+    formData.append('password', register.password);
+    formData.append('image', register.image);
+
+    return this.http.post<RegisterResponseViewModel>(`${baseUrl}/api/v1/users`, formData);
+  }
+
   logout(){
     localStorage.removeItem('token');
-    this.router.navigate(['/auth']).then();
+    this.router.navigate(['/auth/login']).then();
   }
 
   verifyToken(): boolean{
     const token = localStorage.getItem('token');
     if(token == null){
-      this.router.navigate(['/auth']).then();
+      console.log('Token not found');
+      this.router.navigate(['/auth/login']).then();
       return false;
     }
 
     if(this.jwtHelper.isTokenExpired(token)){
       localStorage.removeItem('token');
-      this.router.navigate(['/auth']).then();
+      this.router.navigate(['/auth/login']).then();
       return false;
     }
 

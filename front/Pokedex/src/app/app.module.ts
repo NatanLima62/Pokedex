@@ -9,6 +9,9 @@ import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
 import {MatListItem, MatNavList} from "@angular/material/list";
 import {HttpClientModule} from "@angular/common/http";
 import {JwtModule} from "@auth0/angular-jwt";
+import {AuthModule} from "./Modules/Auth/auth.module";
+import {UserModule} from "./Modules/Users/user.module";
+import {PokemonModule} from "./Modules/Pokemons/pokemon.module";
 
 @NgModule({
   declarations: [
@@ -23,6 +26,9 @@ import {JwtModule} from "@auth0/angular-jwt";
     MatNavList,
     MatListItem,
     HttpClientModule,
+    AuthModule,
+    UserModule,
+    PokemonModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: function tokenGetter() {

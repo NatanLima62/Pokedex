@@ -15,11 +15,9 @@ export class LoginComponent implements OnInit {
   hide: boolean = true;
   inProgress: boolean = false;
   loginForm: FormGroup = this.formBuilder.group({
-    email: ['', Validators.required, Validators.email],
+    email: ['', Validators.required],
     password: ['', Validators.required]
   });
-
-  color: string = 'primary';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -73,11 +71,6 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.inProgress = true;
-    if (this.loginForm.invalid){
-      this.inProgress = false;
-      this.markHasErros();
-    }
-
     this.authService.login(this.loginForm.value).subscribe(
       {
         next: (response) => {
@@ -101,6 +94,6 @@ export class LoginComponent implements OnInit {
     this.loginForm.markAllAsTouched();
     this.loginForm.markAsDirty();
     this.loginForm.get('email')?.setErrors({invalid: true});
-    this.loginForm.get('password')?.setErrors({invalid: true});
+    this.loginForm.get('password')?.setErrors( {invalid: true});
   }
 }

@@ -10,10 +10,12 @@ import {MatIcon} from "@angular/material/icon";
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {AuthService} from "./Services/auth.service";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
+import { RegisterComponent } from './Pages/register/register.component';
 
 @NgModule({
   declarations: [
-    LoginComponent
+    RegisterComponent,
+    LoginComponent,
   ],
     imports: [
         CommonModule,
