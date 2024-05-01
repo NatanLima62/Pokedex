@@ -7,7 +7,7 @@ import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
 import {MatListItem, MatNavList} from "@angular/material/list";
 import {RouterLink} from "@angular/router";
-import { ErroComponent } from './Components/erro/erro.component';
+import { SnackbarErrorComponent } from './Components/snackbar-error/snackbar-error.component';
 import {MatFormField} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
@@ -18,7 +18,7 @@ import {MatSnackBarAction, MatSnackBarActions, MatSnackBarLabel} from "@angular/
 @NgModule({
   declarations: [
     NavbarComponent,
-    ErroComponent,
+    SnackbarErrorComponent,
   ],
   exports: [
     NavbarComponent

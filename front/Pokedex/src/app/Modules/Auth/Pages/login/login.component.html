@@ -27,7 +27,16 @@
         </mat-form-field>
 
         <div class="button-container">
-          <button mat-flat-button color="warn" (click)="login()">Entrar</button>
+          @if (inProgress) {
+            <button mat-flat-button [disabled]="inProgress">
+              <mat-progress-spinner
+                color="primary"
+                mode="indeterminate">
+              </mat-progress-spinner>
+            </button>
+          } @else {
+            <button mat-flat-button [disabled]="inProgress" (click)="login()">Entrar</button>
+          }
         </div>
 
         <div class="links">

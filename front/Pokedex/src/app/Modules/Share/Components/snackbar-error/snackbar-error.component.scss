@@ -1,0 +1,8 @@
+::ng-deep .snackbar-container{
+  display: flex;
+
+  .snackbar-erros{
+    display: flex;
+    flex-direction: column;
+  }
+}

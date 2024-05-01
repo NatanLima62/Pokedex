@@ -15,10 +15,10 @@ const routes: Routes = [
     loadChildren: () => import('./Modules/Pokemons/pokemon.module').then(m => m.PokemonModule)
   },
   {
-    path: '', redirectTo: 'auth', pathMatch: 'full'
+    path: '', redirectTo: 'pokemons', pathMatch: 'full'
   },
   {
-    path: '**', redirectTo: 'auth'
+    path: '**', redirectTo: 'pokemons'
   }
 ];
 

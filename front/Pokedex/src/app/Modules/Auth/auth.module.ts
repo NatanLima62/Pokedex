@@ -9,25 +9,27 @@ import {MatInput} from "@angular/material/input";
 import {MatIcon} from "@angular/material/icon";
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {AuthService} from "./Services/auth.service";
+import {MatProgressSpinner} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
     LoginComponent
   ],
-  imports: [
-    CommonModule,
-    AuthRoutingModule,
-    FormsModule,
-    MatFormField,
-    MatInput,
-    MatIcon,
-    MatLabel,
-    MatIconButton,
-    ReactiveFormsModule,
-    MatError,
-    MatButton,
-    MatSuffix,
-  ],
+    imports: [
+        CommonModule,
+        AuthRoutingModule,
+        FormsModule,
+        MatFormField,
+        MatInput,
+        MatIcon,
+        MatLabel,
+        MatIconButton,
+        ReactiveFormsModule,
+        MatError,
+        MatButton,
+        MatSuffix,
+        MatProgressSpinner,
+    ],
   providers: [
     AuthService
   ]

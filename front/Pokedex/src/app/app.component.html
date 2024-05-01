@@ -4,6 +4,7 @@
     <mat-drawer #drawer mode="side" [opened]="toggleSignal">
       <mat-nav-list>
         <a mat-list-item routerLink="/pokemons" (click)="drawer.close(); toggleSignal = true">Pokemóns</a>
+        <a mat-list-item (click)="drawer.close(); toggleSignal = true; authService.logout()">Sair</a>
       </mat-nav-list>
     </mat-drawer>
     <router-outlet></router-outlet>

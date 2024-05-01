@@ -14,13 +14,15 @@ export class AppComponent {
 
   constructor(
     private router: Router,
-    private authService: AuthService
+    public authService: AuthService
   ) {
     this.router.events
       .subscribe(() =>{
         this.showNavbar = this.router.url !== '/auth';
       });
 
-    this.authService.verifyToken();
+    if (this.authService.verifyToken() && this.router.url === '/auth'){
+      this.router.navigate(['/pokemons']).then();
+    }
   }
 }

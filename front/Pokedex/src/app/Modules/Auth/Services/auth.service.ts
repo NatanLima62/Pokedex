@@ -27,15 +27,19 @@ export class AuthService{
     this.router.navigate(['/auth']).then();
   }
 
-  verifyToken(){
+  verifyToken(): boolean{
     const token = localStorage.getItem('token');
     if(token == null){
       this.router.navigate(['/auth']).then();
+      return false;
     }
 
     if(this.jwtHelper.isTokenExpired(token)){
       localStorage.removeItem('token');
       this.router.navigate(['/auth']).then();
+      return false;
     }
+
+    return true;
   }
 }

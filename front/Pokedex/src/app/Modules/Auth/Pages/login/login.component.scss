@@ -39,6 +39,15 @@
 
           button{
             width: 100%;
+            background: red;
+            color: white;
+
+            .mdc-button__label {
+              mat-progress-spinner{
+                width: 20px !important;
+                height: 20px !important;
+              }
+            }
           }
         }
 

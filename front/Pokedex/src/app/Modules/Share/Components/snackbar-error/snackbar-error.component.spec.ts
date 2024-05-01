@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ErroComponent } from './erro.component';
+import { SnackbarErrorComponent } from './snackbar-error.component';
 
 describe('ErroComponent', () => {
-  let component: ErroComponent;
-  let fixture: ComponentFixture<ErroComponent>;
+  let component: SnackbarErrorComponent;
+  let fixture: ComponentFixture<SnackbarErrorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ErroComponent]
+      declarations: [SnackbarErrorComponent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(ErroComponent);
+
+    fixture = TestBed.createComponent(SnackbarErrorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

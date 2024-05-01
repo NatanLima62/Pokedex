@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../Services/auth.service";
 import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {ErroComponent} from "../../../Share/Components/erro/erro.component";
+import {SnackbarErrorComponent} from "../../../Share/Components/snackbar-error/snackbar-error.component";
 import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
@@ -13,10 +13,13 @@ import {HttpErrorResponse} from "@angular/common/http";
 })
 export class LoginComponent implements OnInit {
   hide: boolean = true;
+  inProgress: boolean = false;
   loginForm: FormGroup = this.formBuilder.group({
     email: ['', Validators.required, Validators.email],
     password: ['', Validators.required]
   });
+
+  color: string = 'primary';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -69,9 +72,10 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.inProgress = true;
     if (this.loginForm.invalid){
-      this.loginForm.markAllAsTouched();
-      this.loginForm.markAsDirty();
+      this.inProgress = false;
+      this.markHasErros();
     }
 
     this.authService.login(this.loginForm.value).subscribe(
@@ -80,14 +84,23 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', response.token);
         },
         error: (error: HttpErrorResponse) => {
-          this._snackBar.openFromComponent(ErroComponent, {
+          this._snackBar.openFromComponent(SnackbarErrorComponent, {
             data: {messages: error.status === 0 ? ["Erro desconhecido"] : error.error},
             duration: 5000
           });
+          this.markHasErros();
+          this.inProgress = false;
         },
         complete: () => {
           this.router.navigate(['/pokemons']).then();
       }
     })
+  }
+
+  markHasErros(){
+    this.loginForm.markAllAsTouched();
+    this.loginForm.markAsDirty();
+    this.loginForm.get('email')?.setErrors({invalid: true});
+    this.loginForm.get('password')?.setErrors({invalid: true});
   }
 }
