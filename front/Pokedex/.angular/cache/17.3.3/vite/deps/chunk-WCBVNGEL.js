@@ -4994,6 +4994,7 @@ export {
   FocusTrapFactory,
   LiveAnnouncer,
   FocusMonitor,
+  A11yModule,
   Directionality,
   BidiModule,
   MatCommonModule,
@@ -5001,8 +5002,9 @@ export {
   ErrorStateMatcher,
   RippleRenderer,
   MAT_RIPPLE_GLOBAL_OPTIONS,
+  MatRipple,
   MatRippleModule,
   MatPseudoCheckboxModule,
   MatRippleLoader
 };
-//# sourceMappingURL=chunk-MNMIA4GG.js.map
+//# sourceMappingURL=chunk-WCBVNGEL.js.map

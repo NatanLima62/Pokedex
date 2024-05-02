@@ -21,3 +21,16 @@ export interface RegisterResponseViewModel {
     picture: string;
     disabled: boolean;
 }
+
+export interface ChangePasswordUserViewModel {
+    email: string;
+    password: string;
+    confirmPassword: string;
+    token: string;
+}
+
+export interface ChangePasswordAuthenticatedUserViewModel {
+    password: string;
+    newPassword: string;
+    confirmNewPassword: string;
+}

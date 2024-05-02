@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using NetDevPack.Security.Jwt.Core.Interfaces;
 using Pokedex.Application.Contracts;
 using Pokedex.Application.Notifications;
 using Pokedex.Application.Services;
@@ -18,6 +17,8 @@ public static class DependencyInjection
     public static void SetupSettings(this IServiceCollection services, IConfiguration configuration)
     {
         services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
+        services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
+        services.Configure<AppSettings>(configuration.GetSection("AppSettings"));
     } 
     
     public static void ConfigureDependencies(this IServiceCollection services, IConfiguration configuration)
@@ -35,6 +36,7 @@ public static class DependencyInjection
             .AddScoped<INotificator, Notificator>();
         
         services
+            .AddScoped<IEmailService, EmailService>()
             .AddScoped<IAuthService, AuthService>()
             .AddScoped<IUserService, UserService>();
     }

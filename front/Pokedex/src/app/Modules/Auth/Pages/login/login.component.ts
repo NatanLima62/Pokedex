@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../Services/auth.service";
 import {Router} from "@angular/router";
@@ -11,7 +11,7 @@ import {HttpErrorResponse} from "@angular/common/http";
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   hide: boolean = true;
   inProgress: boolean = false;
   loginForm: FormGroup = this.formBuilder.group({
@@ -23,49 +23,41 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
   ) {
   }
 
-  ngOnInit(): void {
-
-  }
-
-  verifyError(campo: string): any {
-    if(campo == null && campo == ''){
+  verifyError(field: string): any {
+    if (field == null || field == '') {
       return [];
     }
 
-    const emailForm = this.loginForm.get('email');
-    if(emailForm == null){
-      return [];
-    }
-
-    if (emailForm.touched || emailForm.dirty) {
-      return this.getErrorMessage(campo);
-    }
+    return this.getErrorMessage(field);
   }
 
   getErrorMessage(campo: string): string[] {
-    const campoForm = this.loginForm.get(campo);
-    if(campoForm == null){
+    const fieldForm = this.loginForm.get(campo);
+    if (fieldForm == null) {
       return [];
     }
 
     let errors: string[] = [];
-    if (campoForm.hasError('required')) {
+    if (fieldForm.hasError('required')) {
+      errors.push(`The field ${campo} is required!`);
+    }
 
-      errors.push(`O campo ${campo} é obrigatório`);
+    if (fieldForm.hasError('email')) {
+      errors.push(`The field ${campo} is a invalid email`);
     }
-    if (campoForm.hasError('email')) {
-      errors.push(`O campo ${campo} não é um email válido`);
+
+    if (fieldForm.hasError('minlength')) {
+      errors.push(`The field ${campo} must have at least ${fieldForm.getError('minlength').requiredLength} characters`);
     }
-    if (campoForm.hasError('minlength')) {
-      errors.push(`O campo ${campo} deve ter no mínimo ${campoForm.getError('minlength').requiredLength} caracteres`);
+
+    if (fieldForm.hasError('maxlength')) {
+      errors.push(`The field ${campo} must have at most ${fieldForm.getError('maxlength').requiredLength} characters`);
     }
-    if (campoForm.hasError('maxlength')) {
-      errors.push(`O campo ${campo} deve ter no máximo ${campoForm.getError('maxlength').requiredLength} caracteres`);
-    }
+
     return errors;
   }
 
@@ -86,14 +78,14 @@ export class LoginComponent implements OnInit {
         },
         complete: () => {
           this.router.navigate(['/pokemons']).then();
-      }
-    })
+        }
+      });
   }
 
-  markHasErros(){
+  markHasErros() {
     this.loginForm.markAllAsTouched();
     this.loginForm.markAsDirty();
     this.loginForm.get('email')?.setErrors({invalid: true});
-    this.loginForm.get('password')?.setErrors( {invalid: true});
+    this.loginForm.get('password')?.setErrors({invalid: true});
   }
 }

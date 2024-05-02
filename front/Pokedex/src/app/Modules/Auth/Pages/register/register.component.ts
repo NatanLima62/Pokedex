@@ -11,7 +11,7 @@ import {SnackbarErrorComponent} from "../../../Share/Components/snackbar-error/s
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
   hide: boolean = true;
   inProgress: boolean = false;
   registerForm: FormGroup = this.formBuilder.group({
@@ -27,10 +27,6 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private _snackBar: MatSnackBar
   ) {
-  }
-
-  ngOnInit(): void {
-
   }
 
   verifyError(field: string): any {

@@ -18,11 +18,13 @@ export class AppComponent {
   ) {
     this.router.events
       .subscribe(() =>{
-        this.showNavbar = this.router.url !== '/auth/login' && this.router.url !== '/auth/register';
+        this.showNavbar = !this.router.url.startsWith('/auth');
       });
 
-    if (this.authService.verifyToken()){
-      this.router.navigate(['/pokemons']).then();
+    if (this.router.url !== '/'){
+      if (this.authService.verifyToken()){
+        this.router.navigate(['/pokemons']).then();
+      }
     }
   }
 }

@@ -11,27 +11,35 @@ import {MatButton, MatIconButton} from "@angular/material/button";
 import {AuthService} from "./Services/auth.service";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import { RegisterComponent } from './Pages/register/register.component';
+import { RecoverPasswordComponent } from './Pages/recover-password/recover-password.component';
+import {MatStep, MatStepLabel, MatStepper, MatStepperNext, MatStepperPrevious} from "@angular/material/stepper";
 
 @NgModule({
   declarations: [
     RegisterComponent,
     LoginComponent,
+    RecoverPasswordComponent,
   ],
-    imports: [
-        CommonModule,
-        AuthRoutingModule,
-        FormsModule,
-        MatFormField,
-        MatInput,
-        MatIcon,
-        MatLabel,
-        MatIconButton,
-        ReactiveFormsModule,
-        MatError,
-        MatButton,
-        MatSuffix,
-        MatProgressSpinner,
-    ],
+  imports: [
+    CommonModule,
+    AuthRoutingModule,
+    FormsModule,
+    MatFormField,
+    MatInput,
+    MatIcon,
+    MatLabel,
+    MatIconButton,
+    ReactiveFormsModule,
+    MatError,
+    MatButton,
+    MatSuffix,
+    MatProgressSpinner,
+    MatStepper,
+    MatStepperNext,
+    MatStepLabel,
+    MatStep,
+    MatStepperPrevious,
+  ],
   providers: [
     AuthService
   ]

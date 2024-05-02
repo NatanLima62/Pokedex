@@ -11,6 +11,8 @@ public class User : Entity, ISoftDelete, IAggregateRoot
     public string Password { get; set; } = null!;
     public string? Picture { get; set; }
     public bool Disabled { get; set; }
+    public Guid? TokenRecoverPassword { get; set; }
+    public DateTime? TokenExpiresIn { get; set; }
 
     public override bool Validate(out ValidationResult validationResult)
     {
